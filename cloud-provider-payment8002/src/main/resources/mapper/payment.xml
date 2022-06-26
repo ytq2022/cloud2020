@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springcloud.dao.PaymentDao">
+
+
+    <select id="queryPaymentById" resultType="com.atguigu.springcloud.entyies.Payment" >
+        SELECT * FROM payment  t WHERE t.id=#{id}
+    </select>
+
+    <insert id="create"  >
+        insert  into payment(id,serial) values (#{id},#{serial})
+
+    </insert>
+
+
+</mapper>
+
+<!--
+<mapper namespace="com.atguigu.springcloud.dao.PaymentDao" >
+
+    <select id="queryPaymentById"  resultType="Payment">
+   SELECT * FROM payment  t WHERE t.id=#{id}
+
+</select>
+
+    <insert id="create" parameterType="Payment" keyProperty="id">
+    insert into  payment(id,serial) values(#{id},#{serial})
+
+</insert>
+
+
+
+
+
+
+
+</mapper>
+-->
+
