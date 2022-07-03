@@ -1,0 +1,15 @@
+server:
+  port: 83
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+
+server-url:
+  my_nacos_url: http://nacos-payment-provider  #自定义的要调用的消费提供者的URL
+
