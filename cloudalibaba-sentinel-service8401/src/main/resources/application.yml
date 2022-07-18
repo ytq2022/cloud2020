@@ -13,6 +13,8 @@ spring:
         dashboard: localhost:8080
         port: 8719
 
+
+
 management:
   endpoints:
     web:
