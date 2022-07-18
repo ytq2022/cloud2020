@@ -1,7 +1,10 @@
 package com.atguigu.cloudalibaba.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeUnit;
@@ -52,4 +55,20 @@ public class FlowLimitController {
         int a=10/0;
         return "----test e----";
     }
+
+    @GetMapping("/hotKey")
+    @SentinelResource(value = "s_hotkey",blockHandler = "deal_testHotKey")
+    //@SentinelResource定义兜底方法 s_hotkey定义唯一值就可以，deal_testHotKey：下面兜底方法
+    //如果不写blockHandler，则使用默认的错误页面
+    public String testHotKey(@RequestParam(value = "p1",required = false)String p1,
+                              @RequestParam(value = "p2",required = false)String p2){
+      //  int a=10/0;//这个是运行时的异常，sentinel不管,直接抛出异常
+        return " test hotKey";
+    }
+    //兜底方法参数要和testHotKey方法参数后面要多一个blockException
+    public String deal_testHotKey(String p1, String p2, BlockException be){
+        return "兜底的方法";
+    }
+
+
 }
