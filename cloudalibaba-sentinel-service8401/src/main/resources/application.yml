@@ -12,8 +12,15 @@ spring:
       transport:
         dashboard: localhost:8080
         port: 8719
-
-
+      #做sentinel的持久化，从nacos中读取配置信息
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: cloudalibaba-sentinel-service
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 
 management:
   endpoints:
