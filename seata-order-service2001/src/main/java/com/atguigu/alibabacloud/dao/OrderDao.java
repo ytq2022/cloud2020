@@ -14,7 +14,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface OrderDao {
     //1 新建订单
-    void create (Order order);
+    long create (Order order);
     //2 修改订单状态，从零改为1
     int updateStatus(@Param("id")Long id,@Param("status") int status);
 }

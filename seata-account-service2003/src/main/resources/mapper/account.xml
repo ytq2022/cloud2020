@@ -14,7 +14,7 @@
         SET
           residue = residue - #{money},used = used + #{money}
         WHERE
-          user_id = #{userId};
+          user_id = #{userId}
     </update>
 
 </mapper>

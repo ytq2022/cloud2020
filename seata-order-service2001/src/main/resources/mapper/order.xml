@@ -12,7 +12,7 @@
     </resultMap>
 
 
-    <insert id="create" >
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
        INSERT INTO t_order(id,user_id,product_id,count,money,status)
          values(null,#{userId},#{productId},#{count},#{money},0)
     </insert>
